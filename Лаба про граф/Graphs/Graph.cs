@@ -216,26 +216,25 @@ namespace Лаба_про_граф
         public void optimize()
         {
             List<Node> allStates = new List<Node>();
-            Hashtable endStates = new Hashtable();
+            List<Node> endStates = new List<Node>();
             foreach (Node n in nodes)
             {
-                
+                if (n.tag == Graph.finalTag)
+                {
+                    endStates.Add(n);
+                }
+                else allStates.Add(n);
             }
             bool isChanged = true;
             while(isChanged)
             {
                 isChanged = false;
                 
-                foreach (var key in endStates.Keys)
+               foreach (var endState in endStates)
                 {
-                    Dictionary<string, List<Node>> temp = new Dictionary<string, List<Node>>();
-                    
-                    foreach (Node n in allStates)
+                    foreach (var node in nodes)
                     {
-                        foreach (KeyValuePair<string, Node> link in n.links)
-                        {
-                           
-                        }
+                        if ()
                     }
                 }
             }
