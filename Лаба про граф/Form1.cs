@@ -146,6 +146,7 @@ namespace Лаба_про_граф
                     Node h = getNode(e.Location.X, e.Location.Y);
                     if (h!=null)
                     {
+                        Me
                         graph.link(choosed, h, "new link");
                         isLinking = false;
                         //G.Clear(DefaultBackColor);

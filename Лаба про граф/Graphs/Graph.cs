@@ -159,6 +159,14 @@ namespace Лаба_про_граф
 
         public void link(Node from, Node to, String linkData)
         {
+            if (from.links.Select(e => e.Value).Contains(to))
+            {
+                var link = from.links.Find(e => e.Value == to);
+                if (link.Key != linkData)
+                {
+                    linkData = link.Key + linkData;
+                }
+            }
             from.links.Add(new KeyValuePair<string, Node>(linkData,to));
             forAllSub(e => { if (e.tag == Graph.isolated)
                     e.tag = Graph.defaultTag;},
@@ -229,14 +237,25 @@ namespace Лаба_про_граф
             while(isChanged)
             {
                 isChanged = false;
+                //Для каждого конечного состояния
+                //Собрать все узлы, ведущие в конечное сотояние
                 
-               foreach (var endState in endStates)
+                //Сгрупировать узлы по символам
+                //Создать из них конечные состояния
+                foreach (var finalState in endStates)
                 {
-                    foreach (var node in nodes)
-                    {
-                        if ()
-                    }
+                    var temp = nodes.Where(
+                        e =>
+                        {
+                            return e.links.Select(
+                         u => u.Value).Contains(finalState);
+                        });
+                    var grouped = temp.GroupBy(
+                        e => e.links.Find(
+                            u => { return u.Value == finalState; }).Key);
+
                 }
+
             }
             
 
@@ -244,5 +263,15 @@ namespace Лаба_про_граф
 
         }
 
+        private Node uniteToFinalState(List<Node> nodes)
+        {
+            string resData = "";
+            nodes.ForEach(node => resData += (node.data + " "));
+            Node res = new Node(resData);
+            //nodes.ForEach(node =>
+            //{if (res.links.Contains(node)) })
+            return null;
+        }
+          
     }
 }
