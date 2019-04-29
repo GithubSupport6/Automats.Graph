@@ -85,6 +85,7 @@ namespace Лаба_про_граф
 
         private void subDraw(Node root, Graphics G)
         {
+
             graph.forAll(e => {
                 drawNode(e, G);
             }, (y,u)=> {
